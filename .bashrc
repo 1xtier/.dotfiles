@@ -142,11 +142,6 @@ source "$OSH"/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
-nexport OH_MY_NEOVIM=/home/a.kurilov/.oh-my-neovim
-nexport OH_MY_NEOVIM_EXTENSIONS="default ansible git gpg icons tmux xml yaml"
-nsource /home/a.kurilov/.oh-my-neovim/tools/functions.sh
-nPATH="/home/a.kurilov/.gem/ruby/bin:$PATH"
-nPATH="/home/a.kurilov/.node_modules_global/bin:$PATH"
 alias ll='ls -la'
 alias ..='cd ..'
 alias ga="git add ."
