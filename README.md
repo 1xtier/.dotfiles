@@ -26,4 +26,18 @@ install vim plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
+install bash-support 
+```bash
+https://www.vim.org/scripts/script.php?script_id=365
+```
+Install bash-support 
+```bash
+cp bash-support.zip  ~/.vim
+cd ~/.vim
+unzip bash-support.zip
+```
+Config vimrc
+```VIM
+filetype plugin on
+```
 
