@@ -14,3 +14,16 @@ OSH_THEME="theme defaults"
 source ~/.bashrc
 ```
 и склонируем репозиторий .mydofiles.
+
+## My config VIM
+Install vim bash-language server shellcheck
+```bash
+sudo dnf install vim bash-language-server shellcheck 
+```
+install vim plugins 
+
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
