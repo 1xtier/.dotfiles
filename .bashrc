@@ -5,11 +5,11 @@ case $- in
 esac
 
 # Path to your oh-my-bash installation.
-export OSH='/home/a.kurilov/.oh-my-bash'
+export OSH=~/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="agnoster"
+OSH_THEME="bakke"
 
 # If you set OSH_THEME to "random", you can ignore themes you don't like.
 # OMB_THEME_RANDOM_IGNORED=("powerbash10k" "wanelo")
@@ -104,6 +104,7 @@ aliases=(
 plugins=(
   git
   bashmarks
+  sudo
 )
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -142,8 +143,19 @@ source "$OSH"/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
-alias ll='ls -la'
-alias ..='cd ..'
-alias ga="git add ."
-alias gc="git commit -m"
-alias gp="git push -u origin main"
+# Mount Folder ansibal gateway 
+#alias afup="sshfs root@ansible:/opt/ansible /home/h0lik/dev/ansible"
+#alias afdown="fusermount -u /home/h0lik/dev/ansible"
+#Dev folder ansibal
+#alias af="cd /home/h0lik/dev/ansible"
+## Start/Stop VM ansible
+#alias agup="sudo virsh start ansible"
+#alias agdown="sudo virsh shutdown ansible"
+##Connect SSH ansible-gateway
+#alias assh="ssh ansible"
+#alias devsrv="ssh worksrv"
+#alias grep="grep --color=auto"
+#alias host-ssh="/home/h0lik/.bin/./ssh-host.sh"
+if [ -f ~/.dotfiles/.bash_aliases ]; then
+. ~/.dotfiles/.bash_aliases
+fi
