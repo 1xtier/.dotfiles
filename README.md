@@ -1,43 +1,31 @@
-#my dotfiles for linux
-##Config .bashrc
-  Первое устанавливаем oh-my-bash
+# my dotfiles for linux
+## Config .bashrc
+* Первое устанавливаем oh-my-bash
 ```
 bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
 ```
-После чего выберем тему дл установки я выбрал *agnoster*
-Установим ее, найдем строчку
+После клонируем репозиторий в домашний каталог
+```bash 
+git clone https://github.com/h0lik/.dotfiles.git
 ```
-OSH_THEME="theme defaults"
+после клонирования удаляем в домашнем каталоге файл .bashrc и создаем новый симлинк
+```bash
+cp .bashrc .bashrc.bak
+ln -s /home/$USER/.dotfiles/.bashrc /home/$USER/
 ```
-после чего перечитаем конфиг 
-```
+И перечитаем файл конфигурации
+```bash
 source ~/.bashrc
 ```
-и склонируем репозиторий .mydofiles.
+В конфигурации bash алиасы вынесены в отдельный файл *.bash_aliases*
 
 ## My config VIM
-Install vim bash-language server shellcheck
+Тут тоже все просто первое что мы сделаем это удалим файл конфигурации 
+```bash 
+cp .vimrc .vimrc.bak
+# я намеренно его не удаляю и просто добавляю пометку file.bak
+```
+Теперь создадим симлинк 
 ```bash
-sudo dnf install vim bash-language-server shellcheck 
+ls -s /home/$USER/.dotfiles/.vimrc /home/$USER/.vimrc
 ```
-install vim plugins 
-
-```bash
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-install bash-support 
-```bash
-https://www.vim.org/scripts/script.php?script_id=365
-```
-Install bash-support 
-```bash
-cp bash-support.zip  ~/.vim
-cd ~/.vim
-unzip bash-support.zip
-```
-Config vimrc
-```VIM
-filetype plugin on
-```
-
