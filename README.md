@@ -34,5 +34,5 @@ cp .vimrc .vimrc.bak
 ```
 Теперь создадим симлинк 
 ```bash
-ls -s /home/$USER/.dotfiles/.vimrc /home/$USER/.vimrc
+ln -s /home/$USER/.dotfiles/.vimrc /home/$USER/.vimrc
 ```
