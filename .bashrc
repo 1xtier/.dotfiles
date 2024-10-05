@@ -6,7 +6,7 @@ esac
 
 # Path to your oh-my-bash installation.
 export OSH=~/.oh-my-bash
-
+source ~/.local/bin/bashmarks.sh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
 OSH_THEME="bakke"
@@ -103,8 +103,10 @@ aliases=(
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  bashmarks
   sudo
+  progress
+  bashmarks
+  pyenv
 )
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)

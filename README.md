@@ -1,4 +1,11 @@
 # my dotfiles for linux
+## Справочка по работе с VIM 
+### Открываем NERDTree 
+- Комбинация <CTRL> + <T>  <CTRL> + <R>
+###  Split 
+- Горизонтально <CTRL> + <W> s        
+- Вертикально <CTRL> + <W> v
+- Перемешение <CTRL> + <W> 
 ## Config .bashrc
 * Первое устанавливаем oh-my-bash
 ```

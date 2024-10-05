@@ -17,9 +17,12 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
-
-                  
+nnoremap <C-t> :NERDTreeToggle<CR>
+set encoding=UTF-8                  
 set termguicolors
 
 let g:tokyonight_style = 'night' " available: night, storm
@@ -27,7 +30,7 @@ let g:tokyonight_enable_italic = 1
 
 colorscheme tokyonight
 let g:AutoPairsShorcutToggle = '<C-P>'
-
+let vim_markdown_preview_github=1
 if executable('bash-language-server')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'bash-language-server',
