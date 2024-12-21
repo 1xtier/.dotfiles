@@ -1,8 +1,7 @@
 #!/bin/bash
-
+set -e 
 myhelp() {
-
-cat << EOF 
+cat <<EOF 
 -----------------------------------------------------
  ##   ##  ##  ##   ##  ##   ######   ##       #####   
  ### ###  ##  ##   ##  ##   ##       ##       ##  ##  
@@ -19,7 +18,7 @@ alias z     | Command cd ..
 alias zz    | Command cd ../..
 alias rmdir | Command rm -rf 
 alias st    | Command systemctl
- EOF 
+EOF
 }
 
 myhelp
