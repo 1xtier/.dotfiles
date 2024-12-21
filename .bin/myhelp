@@ -12,8 +12,6 @@ cat << EOF
  ##   ##    ##     ##  ##   ##       ##       ##      
  ##   ##    ##     ##  ##   ######   ######   ##   
 -----------------------------------------------------
-EOF
-cat << EOF 
 alias yz    | yazi
 alias myzsh | source ~/.zshrc
 alias ll    | Comand ls -la
@@ -21,8 +19,7 @@ alias z     | Command cd ..
 alias zz    | Command cd ../..
 alias rmdir | Command rm -rf 
 alias st    | Command systemctl
-EOF 
-
+ EOF 
 }
 
 myhelp
