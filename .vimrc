@@ -1,5 +1,5 @@
-filetype plugin on 
-set nocompatible 
+filetype plugin on
+set nocompatible
 set number
 set belloff=all
 
@@ -7,13 +7,13 @@ set belloff=all
 call plug#begin()
 
 
-Plug 'sheerun/vim-polyglot'  
+Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'LunarWatcher/auto-pairs'
 Plug 'maxboisvert/vim-simple-complete'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mrk21/yaml-vim'
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'morhetz/gruvbox'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -22,13 +22,10 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 nnoremap <C-t> :NERDTreeToggle<CR>
-set encoding=UTF-8                  
+set encoding=UTF-8
 set termguicolors
-
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
-
-colorscheme tokyonight
+set bg=dark
+colorscheme gruvbox
 let g:AutoPairsShorcutToggle = '<C-P>'
 let vim_markdown_preview_github=1
 if executable('bash-language-server')
