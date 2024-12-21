@@ -24,3 +24,5 @@ alias st    | Command systemctl
 EOF 
 
 }
+
+myhelp
