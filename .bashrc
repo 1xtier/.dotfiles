@@ -10,6 +10,7 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
+export PS1="\e[0;34m\u\e[0m:\e[0;31m\h\e[0m \e[0;32m>\W\$ \e[0m"
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
