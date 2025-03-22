@@ -1,0 +1,12 @@
+alias vim="nvim"
+alias untar="tar xvf"
+alias uz="unzip"
+alias yz="yazi"
+alias tf="terraform"
+alias ap-key="cat ~/.myconfig/id_ed25519.pub"
+alias tfp="tf plan"
+alias tfa="tf apply"
+alias tfd="tf destroy"
+alias ga="git add ."
+alias gc='git commit -m'
+alias gp="git push"
