@@ -36,3 +36,8 @@ cp .vimrc .vimrc.bak
 ```bash
 ln -s /home/$USER/.dotfiles/.vimrc /home/$USER/.vimrc
 ```
+
+### Lori
+Это макросы для частого использования комманд, нужно когда Alias уже не подходит!
+### Myalias
+Выводит список всех Alias в в zsh/bash_alliases
