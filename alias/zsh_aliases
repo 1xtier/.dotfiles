@@ -1,3 +1,4 @@
+alias add-alias="vim ~/.dotfiles/alias/zsh_aliases"
 alias vim="nvim"
 alias untar="tar xvf"
 alias uz="unzip"
