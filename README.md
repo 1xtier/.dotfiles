@@ -41,3 +41,17 @@ ln -s /home/$USER/.dotfiles/.vimrc /home/$USER/.vimrc
 Это макросы для частого использования комманд, нужно когда Alias уже не подходит!
 ### Myalias
 Выводит список всех Alias в в zsh/bash_alliases
+
+### Ansible 
+* В домашнем каталоге пользователя создаем папки для Ansible
+```bash
+mkdir -p ansible | mkdir -p ansible/{roles,playbooks,tmp}
+```
+* Там же создаем файл iventory
+```bash
+touch ansible/inventory
+```
+* И линкуем конфиг ansible в папку ansible 
+```bash
+ln -s /home/floki/.dotfiles/ansible.cfg /home/floki/ansible/ansible.cfg
+```
