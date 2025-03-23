@@ -11,3 +11,5 @@ alias tfd="tf destroy"
 alias ga="git add ."
 alias gc='git commit -m'
 alias gp="git push"
+alias T="tmux attach -t Work || tmux new -s Work"
+alias t-help="~/.dotfiles/sh/./tmux-help"
