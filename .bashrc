@@ -68,6 +68,20 @@ _lori_completion() {
 }
 
 complete -F _lori_completion lori
+myalias() {
+  local RED=$(tput setaf 1)
+  local GREEN=$(tput setaf 2)
+  local normal=$(tput sgr0)
+  echo "My custom aliases:"
+  printf "%-20s %s\n" "Alias" "Command"
+  echo "------------------------------"
+  for key in $(cat ~/.dotfiles/alias/bash_aliases | awk '{print $2}' | awk -F"=" '{print $1}'); do
+    command=$(cat ~/.dotfiles/alias/bash_aliases | grep "${key}" | awk -F"=" '{print $2}')
+    printf "%-20s %s\n" "${RED}$key${normal}" "${GREEN}$command${normal}"
+done | sort
+return 0
+}
+complete -F myalias
 # load bash alias
 if [ -f ~/.dotfiles/bash_aliases ]; then
 . ~/.dotfiles/.bash_aliases
