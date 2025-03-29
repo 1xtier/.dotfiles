@@ -98,6 +98,23 @@ done | sort
 return 0
 }
 compdef myalias
+sshc() {
+  local RED=$(tput setaf 1)
+  local GREEN=$(tput setaf 2)
+  local normal=$(tput sgr0)
+  echo "My custom aliases SSH-config:"
+  printf "%-18s %s\n" "Name" "Hostname"
+  echo "------------------------------"
+  # cat ~/.ssh/config.d/$1.conf | while read line || [[ -n $line ]];
+  # do
+  for file in ~/.ssh/config.d/$1.conf; do
+    host=$(grep -w 'Host' $file | awk '{print $2}')
+    command=$(grep -w 'HostName' $file | awk '{print $2}')
+    printf "%-25s %s\n" "${RED}$host${normal}" "${GREEN}$command${normal}"
+done 
+return 0
+}
+compdef myalias
 # Load files alias 
 if [ -f ~/.dotfiles/alias/zsh_aliases ]; then
   . ~/.dotfiles/alias/zsh_aliases

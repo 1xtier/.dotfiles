@@ -1,5 +1,26 @@
 # .bashrc
-
+# COnfigure PS1  Begin
+INPUT_COLOR="\[\033[0m\]"
+DIR_COLOR="\[\033[0;33m\]"
+DIR="\w"
+LINE_VC="\342\224\200"
+LINE_CN_1="\342\224\214"
+LINE_CN_2="\342\224\224"
+LINE_CR="\[\033[0;37m\]"
+USER="\[\033[0;35m\]\u@" 
+HOST="\[\033[0;32m\]<\h>"
+SYMBOL="\[\033[0;32m\]"
+TEST="\[\033[0m\]>"
+ 
+if [[ ${EUID} == 0 ]]; then
+    USER="\[\033[0;31m\]\u@"
+    HOST="\[\033[0;32m\]\h"
+    SYMBOL="\[\033[0;31m\]"
+    TEST="\[\033[0m\]>>"
+fi
+ 
+export PS1="$LINE_CR$LINE_CN_1$LINE_VC $USER$HOST $DIR_COLOR$DIR \n$LINE_CR$LINE_CN_2$LINE_VC $SYMBOL$TEST $INPUT_COLOR"
+# Configure PS1 end
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -10,7 +31,6 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
-export PS1="\e[0;34m\u\e[0m:\e[0;31m\h\e[0m\e[0;32m:\W> \e[0m"
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=

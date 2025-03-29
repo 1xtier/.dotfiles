@@ -13,3 +13,4 @@ alias gc='git commit -m'
 alias gp="git push"
 alias T="tmux attach -t Work || tmux new -s Work"
 alias t-help="~/.dotfiles/sh/./tmux-help"
+alias ccom="sudo minicom -b $1 -D /dev/tty$2 "
