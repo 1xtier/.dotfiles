@@ -1,0 +1,3 @@
+[submodule "nackernvim"]
+	path = nackernvim
+	url = git@github.com:1xtier/NackerNVIM.git

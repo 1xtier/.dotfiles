@@ -2,25 +2,16 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
+# Export Variables
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:/usr/local/go/bin
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+export PATH=$PATH:/usr/local/go/bin:$HOME/.dotfiles/sh:$HOME/.local/bin
+export EDITOR=nvim
+# Theme
 ZSH_THEME="crunch"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Connect Plugin
 plugins=(git taskwarrior)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -30,13 +21,14 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   ZSH_THEME="agnoster"
 fi
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fiш
-# Overriding the cat package with bat and configuring it
+
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+else
+   export EDITOR='nvim'
+fi
+
+# User configuration
 if [[ -e $(which batcat) ]]; then
     export bat="batcat"
     alias bat="batcat"
