@@ -3,7 +3,7 @@ function helpcli() {
 	 echo "* install nackerNvim"
 
 }
-fucntion install() {
+function install() {
 	cd ~/.dotfiles
 	git submodule init 
 	git submodule update
