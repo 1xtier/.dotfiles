@@ -67,8 +67,10 @@ _lori_completion() {
 }
 compdef _lori_completion lori
 
-alias ..="cd .."
-alias vm-manager="ssh -X root@10.10.0.254 virt-manager"
+if [ -f ~/.dotfiles/macos/zsh_aliases ]; then
+  . ~/.dotfiles/macos/zsh_aliases
+fi
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 PRELINE="\r\033[A"
 
