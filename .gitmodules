@@ -1,3 +1,6 @@
 [submodule "nackernvim"]
 	path = nackernvim
 	url = git@github.com:1xtier/NackerNVIM.git
+[submodule "alisa"]
+	path = alisa
+	url = git@github.com:1xtier/alisa.git

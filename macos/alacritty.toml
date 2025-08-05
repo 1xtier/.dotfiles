@@ -11,5 +11,5 @@ import = [
 #opacity = 0.92
 #blur = true 
 [font]
-normal.family = "Hack Nerd Font"
+normal.family = "DaddyTimeMono Nerd Font Mono"
 size = 14.0
