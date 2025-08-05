@@ -1,4 +1,4 @@
-alias add-alias="vim ~/.dotfiles/macos/zsh_aliases"
+alias add-alias="nvim ~/.dotfiles/macos/zsh_aliases"
 alias vim="nvim"
 alias untar="tar xvf"
 alias uz="unzip"

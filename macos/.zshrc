@@ -3,19 +3,26 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=/opt/homebrew/bin:$PATH
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-export PATH=$HOME/.local/bin:$PATH
-export EDITOR="/usr/bin/vim"
+# Configure PATH
+export PATH=/opt/homebrew/bin:$HOME/.local/bin:$HOME/.dotfiles/sh:$HOME/go/bin:$PATH
+# Editor 
+export EDITOR="/usr/bin/nvim"
 export ANSIBLE_CONFIG="$HOME/ansible/ansible.cfg"
+# Configurate remote docker host
 export DOCKER_HOST=tcp://192.168.19.244:2376
 export DOCKER_CERT_PATH="$HOME/.docker/cert-for-docker"
 export DOCKER_TLS_VERIFY=1
-
-
-ZSH_THEME="crunch"
+# Export variables nackernvim
+export NACKER_ANSIBLE_PATH=$HOME/ansible
+export NACKER_TERRAFROM_PATH=$HOME/terraform
+export NACKER_DOTFILES_PATH=$HOME/.dotfiles
+export NACKER_PROJECT_PATH=$HOME/dev
+# 
+ZSH_THEME="nacker"
 plugins=(git docker vscode zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
+# Configure bat Replacement cat tail less > bat
 if [[ -e $(which batcat) ]]; then
     export bat="batcat"
     alias bat="batcat"
@@ -66,10 +73,12 @@ _lori_completion() {
   compadd "$@" -- "${keys[@]}"
 }
 compdef _lori_completion lori
-
+# Configire custom aliases
 if [ -f ~/.dotfiles/macos/zsh_aliases ]; then
   . ~/.dotfiles/macos/zsh_aliases
 fi
+
+
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 PRELINE="\r\033[A"
