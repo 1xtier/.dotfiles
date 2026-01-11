@@ -1,0 +1,27 @@
+load_all_env() {
+    local env_dir="$HOME/.env"
+
+    if [ -d "$env_dir" ]; then
+        for env_file in "$env_dir"/*; do
+            if [ -f "$env_file" ] && [ -r "$env_file" ]; then
+                echo "Loading: $env_file"
+                set -a
+                source "$env_file"
+                set +a
+            fi
+        done
+        echo "All environment files loaded from $env_dir"
+    else
+        echo "Env directory not found: $env_dir"
+    fi
+}
+load_all_env
+
+
+ginit() {
+  git init --initial-branch=main
+  git remote add origin $1
+  git add .
+  git commit -m "Initial commit"
+  git push --set-upstream origin main
+}
