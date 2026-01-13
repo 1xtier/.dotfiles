@@ -1,0 +1,65 @@
+if [[ -e $(which batcat) ]]; then
+    export bat="batcat"
+    alias bat="batcat"
+elif [[ -e $(which bat) ]]; then
+    export bat="bat"
+fi
+if [[ -n $bat ]]; then
+    export COLORTERM="truecolor"
+    export BAT_THEME="Monokai Extended Origin"
+    export MANPAGER="sh -c 'col -bx | $bat --language=man --style=plain'"
+    export MANROFFOPT="-c"
+    alias cat="$bat --style=plain --paging=never"
+    alias less="$bat --paging=always"
+    if [[ $SHELL == *zsh ]]; then
+        alias -g -- --help='--help 2>&1 | $bat --language=help --style=plain'
+    fi
+    help() { "$@" --help 2>&1 | $bat --language=help --style=plain; }
+    tailf() { tail -f "$@" | $bat --paging=never --language=log; }
+    batdiff() { git diff --name-only --relative --diff-filter=d | xargs $bat --diff; }
+fi
+if [[ -e $(which eza) ]]; then
+    if [[ -n "$DISPLAY" || $(tty) == /dev/pts* ]]; then
+        alias ls="eza --group --header --icons"
+        alias tree="eza --long --tree --level=3"
+    else
+        alias ls="eza --group --header"
+        alias tree="eza --long --tree --level=3"
+    fi
+    alias ll="ls --long"
+    alias l="ls --long --all --header"
+    alias lm="ls --long --all --sort=modified"
+    alias lmm="ls -lbHigUmuSa --sort=modified --time-style=long-iso"
+    alias lt="ls --tree"
+    alias lr="ls --recurse"
+    alias lg="ls --long --git --sort=modified"
+fi
+
+lori() {
+  local lori_name="${1}"
+  typeset -A lori_list
+
+
+  lori_list=(
+    disk_size "df -h"
+    )
+
+  if [[ -z ${lori_list[$lori_name]} || -z "$lori_name" || "$lori_name" == "-h" ]]; then
+    echo "AVAILABLE COMMANDS:\n"
+    printf "%-20s %s\n" "command"
+    echo "----------------------"
+    for key in "${(@k)lori_list}"; do
+      printf "%-20s %s\n" "$key" "${lori_list[$key]}"
+    done | sort
+    return 0
+  else
+    print -zr "${lori_list[$lori_name]}"
+    return 0
+  fi
+}
+_lori_completion() {
+  local -a keys
+  keys=($(lori -h | awk 'NR>4 {print $1}'))
+  compadd "$@" -- "${keys[@]}"
+}
+compdef _lori_completion lori

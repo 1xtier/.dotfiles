@@ -5,11 +5,11 @@ padding.x = 20
 padding.y = 20
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/gruvbox_dark.toml"
+    "~/.config/alacritty/themes/themes/nackerthemes.toml"
 ]
 #decorations = "Buttonless"
 #opacity = 0.92
 #blur = true 
 [font]
-normal.family = "DaddyTimeMono Nerd Font Mono"
-size = 14.0
+normal.family = "CodeNewRoman Nerd Font Mono"
+size = 14.5

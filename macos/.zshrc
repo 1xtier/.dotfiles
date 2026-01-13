@@ -5,10 +5,13 @@
 export ZSH="$HOME/.oh-my-zsh"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 # Configure PATH
-export PATH=/opt/homebrew/bin:$HOME/.local/bin:$HOME/.dotfiles/sh:$HOME/go/bin:$PATH
+export PATH=$PATH:/opt/homebrew/bin:/Users/h0lik/.local/bin:$HOME/.dotfiles/sh:$HOME/go/bin:/opt/homebrew/opt/ruby/bin
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 # Editor 
 export EDITOR="/usr/bin/nvim"
-export ANSIBLE_CONFIG="$HOME/ansible/ansible.cfg"
+export ANSIBLE_CONFIG="/Users/h0lik/ansible/ansible.cfg"
 # Configurate remote docker host
 export DOCKER_HOST=tcp://192.168.19.244:2376
 export DOCKER_CERT_PATH="$HOME/.docker/cert-for-docker"
@@ -18,64 +21,20 @@ export NACKER_ANSIBLE_PATH=$HOME/ansible
 export NACKER_TERRAFROM_PATH=$HOME/terraform
 export NACKER_DOTFILES_PATH=$HOME/.dotfiles
 export NACKER_PROJECT_PATH=$HOME/dev
+
+eval "$(rbenv init -)"
 # 
 ZSH_THEME="nacker"
-plugins=(git docker vscode zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git ansible docker vscode zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 # Configure bat Replacement cat tail less > bat
-if [[ -e $(which batcat) ]]; then
-    export bat="batcat"
-    alias bat="batcat"
-elif [[ -e $(which bat) ]]; then
-    export bat="bat"
-fi
-if [[ -n $bat ]]; then
-    export COLORTERM="truecolor"
-    export BAT_THEME="Monokai Extended Origin"
-    export MANPAGER="sh -c 'col -bx | $bat --language=man --style=plain'"
-    export MANROFFOPT="-c"
-    alias cat="$bat --style=plain --paging=never"
-    alias less="$bat --paging=always"
-    if [[ $SHELL == *zsh ]]; then
-        alias -g -- --help='--help 2>&1 | $bat --language=help --style=plain'
-    fi
-    help() { "$@" --help 2>&1 | $bat --language=help --style=plain; }
-    tailf() { tail -f "$@" | $bat --paging=never --language=log; }
-    batdiff() { git diff --name-only --relative --diff-filter=d | xargs $bat --diff; }
-fi
-
-
-lori() {
-  local lori_name="${1}"
-  typeset -A lori_list
-
-
-  lori_list=(
-    disk_size "df -h"
-    )
-
-  if [[ -z ${lori_list[$lori_name]} || -z "$lori_name" || "$lori_name" == "-h" ]]; then
-    echo "AVAILABLE COMMANDS:\n"
-    printf "%-20s %s\n" "command"
-    echo "----------------------"
-    for key in "${(@k)lori_list}"; do 
-      printf "%-20s %s\n" "$key" "${lori_list[$key]}"
-    done | sort
-    return 0
-  else
-    print -zr "${lori_list[$lori_name]}"
-    return 0
-  fi 
-}
-_lori_completion() {
-  local -a keys 
-  keys=($(lori -h | awk 'NR>4 {print $1}'))
-  compadd "$@" -- "${keys[@]}"
-}
-compdef _lori_completion lori
 # Configire custom aliases
+alias kp="/Applications/KeePassXC.app/Contents/MacOS/keepassxc-cli"
 if [ -f ~/.dotfiles/macos/zsh_aliases ]; then
   . ~/.dotfiles/macos/zsh_aliases
+fi
+if [ -f ~/.dotfiles/macos/rc_lib ]; then 
+  . ~/.dotfiles/macos/rc_lib
 fi
 
 
@@ -90,3 +49,6 @@ function color {
 }
 
 color
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/h0lik/.local/bin/terraform terraform
