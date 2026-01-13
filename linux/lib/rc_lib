@@ -38,4 +38,18 @@ gpush() {
   fi
 }
 
-
+myalias() {
+  local RED=$(tput setaf 1)
+  local GREEN=$(tput setaf 2)
+  local normal=$(tput sgr0)
+  
+  echo "  My custom aliases:"
+  echo "  Alias                Command"
+  echo "--------------------- ---------------------------------"
+  grep "^alias " ~/.dotfiles/linux/lib/alias_lib | \
+    sed 's/^alias //;s/="/ /;s/"$//' | \
+    sort | \
+    while read -r key command; do
+      printf "  ${RED}%-20s${normal} ${GREEN}%s${normal}\n" "$key" "$command"
+    done
+}
