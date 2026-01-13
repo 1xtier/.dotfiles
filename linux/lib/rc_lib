@@ -25,3 +25,17 @@ ginit() {
   git commit -m "Initial commit"
   git push --set-upstream origin main
 }
+
+gpush() {
+  if [ -f "$PWD/.gitcommit.txt" ]; then
+    local commit="$(tail -n 1 .gitcommit.txt)"
+    local branch="$(git branch --show-current 2>/dev/null || git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+    git add .
+    git commit -m "$commit"
+    git push origin "$branch"
+  else
+    echo "file no"
+  fi
+}
+
+
